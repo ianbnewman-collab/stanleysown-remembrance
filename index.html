@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Copythorne Remembers — Sunday 8th November 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #1a1a1a;
+    --ink-mid:    #3d3530;
+    --ink-light:  #6b6460;
+    --poppy:      #8b1a1a;
+    --poppy-pale: #c0392b;
+    --rule:       #c8b8a8;
+    --page:       #f9f6f1;
+    --sidebar:    #f2ece3;
+    box-sizing: border-box;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink:        #e8e0d5;
+      --ink-mid:    #cdc5ba;
+      --ink-light:  #9a918a;
+      --poppy:      #c0392b;
+      --poppy-pale: #e74c3c;
+      --rule:       #4a403a;
+      --page:       #1c1714;
+      --sidebar:    #2a2420;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: var(--ink);
+    color: var(--page);
+    padding: 2.5rem 1.25rem 0;
+    text-align: center;
+  }
+  .site-header::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: var(--poppy-pale);
+    margin-top: 2rem;
+  }
+  .org-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rule);
+    margin: 0 0 0.8rem;
+  }
+  .event-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
+    color: var(--poppy-pale);
+    word-wrap: break-word;
+  }
+  .event-date {
+    font-style: italic;
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    color: var(--rule);
+    margin: 0;
+  }
+  .poppy-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0 0;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  /* ─── LAYOUT ─── */
+  .wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  /* ─── SECTION HEADS ─── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 2.5rem 0 1.1rem;
+    overflow: hidden;
+  }
+  .section-head::before,
+  .section-head::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    min-width: 0.5rem;
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--poppy);
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ─── MUSTER BOX ─── */
+  .muster-box {
+    background: var(--sidebar);
+    border-left: 3px solid var(--poppy);
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.4rem;
+    font-size: 0.92rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .muster-box strong { color: var(--ink); }
+
+  /* ─── PARADE LIST — single column always ─── */
+  .parade-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .parade-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+  .parade-list li:last-child { border-bottom: none; }
+  .parade-list li .num {
+    min-width: 1.6rem;
+    flex-shrink: 0;
+    color: var(--poppy);
+    font-weight: 600;
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ─── SERVICE ORDER ─── */
+  .service-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .service-list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+  .service-list li:last-child { border-bottom: none; }
+  .service-list li strong { color: var(--ink); }
+  .service-list li.highlight {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── WREATHS — single column always ─── */
+  .wreath-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .wreath-list li {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--ink-mid);
+    border-bottom: 1px solid var(--rule);
+  }
+  .wreath-list li:last-child { border-bottom: none; }
+  .wreath-list li .num {
+    min-width: 1.6rem;
+    flex-shrink: 0;
+    color: var(--poppy);
+    font-weight: 600;
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ─── HYMNS — expandable inline in service list ─── */
+  .hymn-details {
+    width: 100%;
+  }
+  .hymn-details summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+  .hymn-details summary::-webkit-details-marker { display: none; }
+  .hymn-details summary .summary-label {
+    color: var(--ink-mid);
+    margin-right: 0.2rem;
+  }
+  .hymn-details summary .summary-chevron {
+    color: var(--poppy);
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding-left: 0.5rem;
+  }
+  .hymn-details[open] summary .summary-chevron {
+    transform: rotate(180deg);
+  }
+  .hymn-body {
+    padding: 0.6rem 0 0.8rem 0;
+    border-top: 1px dotted var(--rule);
+    border-bottom: 1px dotted var(--rule);
+    margin-bottom: 0.2rem;
+  }
+  .hymn-body .attribution {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    font-style: italic;
+    margin: 0 0 0.7rem;
+  }
+  .hymn-body p {
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    margin: 0 0 0.75rem;
+  }
+  .hymn-body p:last-child { margin-bottom: 0; }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    background: var(--ink);
+    color: var(--ink-light);
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+  .site-footer span { color: var(--poppy-pale); }
+
+  /* ─── SAFE AREA ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <p class="org-name">Copythorne &amp; District Royal British Legion</p>
+  <h1 class="event-title">'Copythorne Remembers'</h1>
+  <p class="event-date">Sunday 8th November 2026</p>
+  <div class="poppy-row" aria-hidden="true">🌹 🌹 🌹</div>
+</header>
+
+<main class="wrapper">
+
+  <!-- THE PARADE -->
+  <div class="section-head"><h2>The Parade — 10.35 hrs</h2></div>
+
+  <div class="muster-box">
+    The United Parade assembles at the <strong>Copythorne Parish Hall car park at 10.00 hrs</strong> and leaves at <strong>10.35 hrs</strong> precisely, arriving at the War Memorial in front of St Mary's Church.
+  </div>
+
+  <ol class="parade-list" aria-label="Order of parade">
+    <li><span class="num">1</span><span>2nd Copythorne (Stanley's Own) Guide and Scout Band</span></li>
+    <li><span class="num">2</span><span>The Union Flag</span></li>
+    <li><span class="num">3</span><span>Copythorne Royal British Legion Standard</span></li>
+    <li><span class="num">4</span><span>Members of the Royal British Legion, Navy League, Royal Air Forces Association &amp; Veterans</span></li>
+    <li><span class="num">5</span><span>Representatives from local organisations</span></li>
+    <li><span class="num">6</span><span>2nd Copythorne Brownie Guides</span></li>
+    <li><span class="num">7</span><span>1st Copythorne Guide Company</span></li>
+    <li><span class="num">8</span><span>2nd Copythorne Squirrel Scouts</span></li>
+    <li><span class="num">9</span><span>2nd Copythorne Cadnam River &amp; Bartley Water Beaver Scouts</span></li>
+    <li><span class="num">10</span><span>2nd Copythorne Dyak and Zulu Cub Scout Packs</span></li>
+    <li><span class="num">11</span><span>2nd Copythorne Everett and King Scout Troops</span></li>
+    <li><span class="num">12</span><span>Magellan Explorer Scouts</span></li>
+  </ol>
+
+  <!-- THE SERVICE -->
+  <div class="section-head" id="service"><h2>The Remembrance Service — 10.50 hrs</h2></div>
+
+  <ul class="service-list" aria-label="Order of service">
+    <li>Welcome <em>(RBL)</em></li>
+    <li>The Act of Penitence — <strong>Rev N Jacob</strong></li>
+    <li>Bible Reading</li>
+    <li>The Act of Remembrance (Roll Call) &amp; Exhortation</li>
+    <li>The Last Post</li>
+    <li class="highlight">Two-Minute Silence</li>
+    <li>Reveille</li>
+    <li>Prayers — From Copythorne &amp; Bartley Schools, A Guide, A Scout, New Forest for Ukraine, The Lord's Prayer</li>
+    <li style="padding:0;">
+      <details class="hymn-details">
+        <summary><span class="summary-label">Hymn</span> <em>'O God Our Help in Ages Past'</em><span class="summary-chevron">▼</span></summary>
+        <div class="hymn-body">
+          <p class="attribution">Words: Isaac Watts (1719)</p>
+          <p>O God, our help in ages past,<br>Our hope for years to come,<br>Our shelter from the stormy blast,<br>And our eternal home.</p>
+          <p>Under the shadow of Thy throne<br>Thy saints have dwelt secure;<br>Sufficient is Thine arm alone,<br>And our defence is sure.</p>
+          <p>Before the hills in order stood,<br>Or earth received her frame,<br>From everlasting Thou art God,<br>To endless years the same.</p>
+          <p>A thousand ages in Thy sight<br>Are like an evening gone;<br>Short as the watch that ends the night<br>Before the rising sun.</p>
+          <p>Time, like an ever-rolling stream,<br>Bears all its sons away;<br>They fly forgotten, as a dream<br>Dies at the opening day.</p>
+          <p>O God, our help in ages past,<br>Our hope for years to come;<br>Be Thou our guard while troubles last,<br>And our eternal home.</p>
+        </div>
+      </details>
+    </li>
+    <li>Laying of Wreaths</li>
+    <li>The Kohima Epitaph</li>
+    <li>Act of Commitment</li>
+    <li style="padding:0;">
+      <details class="hymn-details">
+        <summary><span class="summary-label">National Anthem</span> <em>'God Save the King'</em><span class="summary-chevron">▼</span></summary>
+        <div class="hymn-body">
+          <p class="attribution">The National Anthem</p>
+          <p>God save our gracious King,<br>Long live our noble King,<br>God save the King!<br>Send him victorious,<br>Happy and glorious,<br>Long to reign over us,<br>God save the King!</p>
+          <p>Thy choicest gifts in store<br>On him be pleased to pour,<br>Long may he reign.<br>May he defend our laws,<br>And ever give us cause<br>To sing with heart and voice,<br>God save the King!</p>
+        </div>
+      </details>
+    </li>
+    <li>The Blessing</li>
+    <li>Dismissal</li>
+  </ul>
+
+  <!-- WREATHS -->
+  <div class="section-head"><h2>Laying of Wreaths</h2></div>
+
+  <ol class="wreath-list" aria-label="Wreath-laying order">
+    <li><span class="num">1</span><span>Deputy Lt of Hampshire, Hon Mrs V Lovell JP DL</span></li>
+    <li><span class="num">2</span><span>Copythorne &amp; District Royal British Legion</span></li>
+    <li><span class="num">3</span><span>The Royal Navy</span></li>
+    <li><span class="num">4</span><span>The Army</span></li>
+    <li><span class="num">5</span><span>Royal Air Forces Association</span></li>
+    <li><span class="num">6</span><span>The Merchant Navy</span></li>
+    <li><span class="num">7</span><span>Copythorne Parish Council</span></li>
+    <li><span class="num">8</span><span>For those named on the War Memorial</span></li>
+    <li><span class="num">9</span><span>Falkland Islands Association</span></li>
+    <li><span class="num">10</span><span>Hampshire Constabulary</span></li>
+    <li><span class="num">11</span><span>South Central Ambulance</span></li>
+    <li><span class="num">12</span><span>Freemasons (West Gate Lodge 7387)</span></li>
+    <li><span class="num">13</span><span>Copythorne Parish Hall Committee</span></li>
+    <li><span class="num">14</span><span>Copythorne Women's Institute</span></li>
+    <li><span class="num">15</span><span>Copythorne Parish History Society</span></li>
+    <li><span class="num">16</span><span>Foresters Friendly Society</span></li>
+    <li><span class="num">17</span><span>Bartley Horticultural Society</span></li>
+    <li><span class="num">18</span><span>Copythorne Sundowners Club</span></li>
+    <li><span class="num">19</span><span>Copythorne Amateur Theatrical Society (CATS)</span></li>
+    <li><span class="num">20</span><span>Foresters Flower Club</span></li>
+    <li><span class="num">21</span><span>Paultons Cricket Club</span></li>
+    <li><span class="num">22</span><span>The Coach and Horses</span></li>
+    <li><span class="num">23</span><span>Copythorne C of E Infants School</span></li>
+    <li><span class="num">24</span><span>Bartley C of E Junior School</span></li>
+    <li><span class="num">25</span><span>Rainbow Guides, Brownie Guides &amp; 1st Copythorne Guide Company</span></li>
+    <li><span class="num">26</span><span>2nd Copythorne (Stanley's Own) Squirrel Scouts</span></li>
+    <li><span class="num">27</span><span>2nd Copythorne (Stanley's Own) Cadnam River &amp; Bartley Water Beavers</span></li>
+    <li><span class="num">28</span><span>2nd Copythorne (Stanley's Own) Dyak &amp; Zulu Cub Scout Packs</span></li>
+    <li><span class="num">29</span><span>2nd Copythorne (Stanley's Own) Everett &amp; King Troop Scout Groups</span></li>
+    <li><span class="num">30</span><span>Magellan Explorer Scout Unit</span></li>
+    <li><span class="num">31</span><span>2nd Copythorne (Stanley's Own) Group Executive Committee &amp; Leaders</span></li>
+    <li><span class="num">32</span><span>Animal Charities Wreath</span></li>
+    <li><span class="num">33</span><span>Cadnam Methodist Church</span></li>
+    <li><span class="num">34</span><span>Winsor Church</span></li>
+    <li><span class="num">35</span><span>Parish Wreath</span></li>
+  </ol>
+
+
+
+</main>
+
+<footer class="site-footer">
+  <span>Lest We Forget</span><br>
+  Copythorne &amp; District Royal British Legion — 'Copythorne Remembers' — 8th November 2026
+</footer>
+
+</body>
+</html>
